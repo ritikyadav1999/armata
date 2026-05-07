@@ -47,9 +47,9 @@ export function PipelineSection() {
         <div className="mb-10 md:mb-12">
           <SectionHeading
             align="center"
-            eyebrow="Operational Architecture"
-            title="The Pipeline"
-            description="Our structured transition funnel from raw concept to operational scale."
+            eyebrow="Operating Path"
+            title="From Startup Idea to Scalable System"
+            description="A clear path from founder assumptions to customer signal, focused product execution, operating loops, and growth systems."
           />
         </div>
         <div

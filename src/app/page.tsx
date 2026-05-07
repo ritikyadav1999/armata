@@ -1,4 +1,5 @@
 import { DiscoverySection } from "@/features/marketing/sections/discovery-section";
+import { EcosystemSection } from "@/features/marketing/sections/ecosystem-section";
 import { Footer } from "@/features/marketing/sections/footer";
 import { HeroSection } from "@/features/marketing/sections/hero-section";
 import { Navigation } from "@/features/marketing/sections/navigation";
@@ -13,6 +14,7 @@ export default function Home() {
       <main className="pt-[68px]">
         <HeroSection />
         <PhilosophySection />
+        <EcosystemSection />
         <PipelineSection />
         <SprintSection />
         <DiscoverySection />

@@ -9,11 +9,13 @@ export function SectionHeading({ eyebrow, title, description, align = "left" }: 
   const isCentered = align === "center";
 
   return (
-    <div className={isCentered ? "mx-auto max-w-2xl text-center" : "max-w-2xl"}>
-      <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-primary">{eyebrow}</span>
-      <h2 className="mt-2 text-h1 text-on-surface">{title}</h2>
+    <div className={isCentered ? "mx-auto max-w-3xl text-center" : "max-w-2xl"}>
+      <span className="section-eyebrow">{eyebrow}</span>
+      <h2 className={isCentered ? "section-title mx-auto mt-3 max-w-2xl" : "section-title mt-3 max-w-xl"}>{title}</h2>
       {description ? (
-        <p className="mt-3 text-body-sm text-on-surface-variant">{description}</p>
+        <p className={isCentered ? "section-copy mx-auto mt-4 max-w-2xl" : "section-copy mt-4 max-w-xl"}>
+          {description}
+        </p>
       ) : null}
     </div>
   );

@@ -2,21 +2,21 @@ import { BrandMark } from "@/components/ui/brand-mark";
 
 const footerGroups = [
   {
-    title: "System",
+    title: "Explore",
     links: [
-      { label: "Why We Exist", href: "#why" },
+      { label: "What We Provide", href: "#ecosystem" },
       { label: "The Pipeline", href: "#pipeline" }
     ]
   },
   {
-    title: "Registry",
+    title: "Process",
     links: [
       { label: "Sprint Model", href: "#sprint" },
       { label: "Discovery Intake", href: "#discovery" }
     ]
   },
   {
-    title: "Nodes",
+    title: "Contact",
     links: [
       { label: "Contact", href: "mailto:hello@armata.group" },
       { label: "Twitter", href: "#" }
@@ -31,10 +31,10 @@ export function Footer() {
         <div className="space-y-4">
           <BrandMark />
           <p className="max-w-xs text-[12px] leading-relaxed text-on-surface-variant">
-            Operating Infrastructure for the next generation of founders. Precision in execution.
+            Operational support for early-stage founders moving from idea to focused MVP, systems, and growth.
           </p>
           <p className="pt-4 font-mono text-[10px] text-on-surface-variant opacity-40">
-            &copy; 2026 ARMATA GROUP. SYSTEM STATUS: NOMINAL.
+            &copy; 2026 ARMATA GROUP.
           </p>
         </div>
         <div className="grid w-full grid-cols-2 gap-12 md:w-auto md:grid-cols-3">

@@ -16,18 +16,18 @@ const teamSizes = [
 
 const supportNeeds = [
   ["", "Select primary need"],
-  ["validation", "Idea Validation"],
-  ["engineering", "MVP Engineering"],
-  ["ops", "Operational Systems"],
-  ["growth", "Growth Infrastructure"],
-  ["full", "Full Pipeline Deployment"]
+  ["validation", "Validate the startup idea"],
+  ["mvp", "Build a focused MVP"],
+  ["ops", "Install operating systems"],
+  ["growth", "Set up growth infrastructure"],
+  ["full", "End-to-end startup support"]
 ];
 
 const timelines = [
   ["", "Select timeline"],
-  ["immediate", "Immediate (Next 2 Weeks)"],
-  ["1month", "Within 1 Month"],
-  ["q-next", "Next Quarter"]
+  ["soon", "As soon as possible"],
+  ["month", "This month"],
+  ["planning", "Planning ahead"]
 ];
 
 const countryCodes = [
@@ -58,9 +58,9 @@ export function DiscoverySection() {
       </div>
       <div className="relative z-10 mx-auto max-w-4xl px-5 sm:px-margin">
         <div className="mb-8 text-center md:mb-10">
-          <span className="mb-2 block font-mono text-[10px] uppercase tracking-[0.2em] text-primary">System Intake</span>
-          <h2 className="text-3xl font-bold leading-tight text-on-surface">Start Your Discovery</h2>
-          <p className="mt-4 text-body-sm text-on-surface-variant">
+          <span className="section-eyebrow">Founder Intake</span>
+          <h2 className="section-title mx-auto mt-3 max-w-xl">Start Your Discovery</h2>
+          <p className="section-copy mx-auto mt-4 max-w-xl">
             Tell us about your startup, current bottlenecks, and what you&apos;re trying to build.
           </p>
         </div>
@@ -85,13 +85,13 @@ export function DiscoverySection() {
               <SelectField id="support" label="Support Needed" options={supportNeeds} />
               <SelectField id="timeline" label="Expected Timeline" options={timelines} />
             </div>
-            <Field id="website" label="Website / Artifact Link" placeholder="https://" type="url" />
+            <Field id="website" label="Product Link" placeholder="https://" type="url" />
             <div className="flex justify-end border-t border-white/5 pt-5">
               <button
                 className="active-scale rounded-sm bg-primary px-8 py-3 font-mono text-[12px] font-bold uppercase tracking-wider text-on-primary transition-colors hover:bg-primary/90"
                 type="submit"
               >
-                Submit Discovery Request
+                Start Discovery
               </button>
             </div>
           </form>

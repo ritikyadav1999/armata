@@ -17,10 +17,10 @@ export function HeroSection() {
     <section className="mx-auto flex max-w-7xl flex-col items-center gap-10 px-5 pb-12 pt-8 sm:px-margin md:flex-row md:gap-14 md:pb-14 md:pt-10">
       <div className="flex-1">
         <div className="max-w-xl">
-          <h1 className="text-[40px] font-bold leading-[1.05] text-on-surface sm:text-[48px]">
-            Helping Founders Move Faster With Structure
+          <h1 className="text-[40px] font-bold leading-[1.06] text-on-surface sm:text-[48px]">
+            Helping Startups Build With Clarity
           </h1>
-          <p className="mt-5 max-w-lg text-body-lg leading-relaxed text-on-surface-variant">
+          <p className="section-copy mt-5 max-w-lg text-[15px]">
             We help founders validate ideas, build focused MVPs, install operational systems, and scale with clarity.
           </p>
           <div className="mt-7 flex flex-wrap gap-sm">
@@ -43,8 +43,8 @@ export function HeroSection() {
         <div className="hero-console glass-panel relative overflow-hidden rounded-sm border border-white/10 p-4 shadow-glow sm:p-5">
           <div className="mb-4 flex items-center justify-between border-b border-white/5 pb-3">
             <div>
-              <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-primary">Startup Command Center</span>
-              <p className="mt-1 text-[12px] text-on-surface-variant">Execution workspace for early-stage teams</p>
+              <span className="meta-label text-primary">Startup Command Center</span>
+              <p className="mt-1 text-[12px] leading-relaxed text-on-surface-variant">Execution workspace for early-stage teams</p>
             </div>
             <span className="rounded-sm border border-primary/20 bg-primary/5 px-2 py-1 font-mono text-[10px] uppercase text-primary">
               Live
@@ -54,7 +54,7 @@ export function HeroSection() {
           <div className="grid gap-3 sm:grid-cols-3">
             {executionSignals.map((signal) => (
               <div className="rounded-sm border border-white/5 bg-surface-container-lowest p-3" key={signal.label}>
-                <span className="block font-mono text-[9px] uppercase tracking-widest text-on-surface-variant">
+                <span className="block font-mono text-[9px] font-semibold uppercase tracking-widest text-on-surface-variant">
                   {signal.label}
                 </span>
                 <span className={`mt-3 block text-sm font-semibold ${signal.tone}`}>{signal.value}</span>
@@ -65,7 +65,7 @@ export function HeroSection() {
           <div className="mt-3 grid gap-3 lg:grid-cols-[1fr_0.86fr]">
             <div className="rounded-sm border border-white/5 bg-surface-container-lowest p-4">
               <div className="mb-4 flex items-center justify-between">
-                <span className="font-mono text-[10px] uppercase tracking-widest text-on-surface-variant">MVP Scope</span>
+                <span className="meta-label text-on-surface-variant">MVP Scope</span>
                 <span className="font-mono text-[10px] uppercase text-primary">Aligned</span>
               </div>
               <div className="space-y-3">
@@ -86,7 +86,7 @@ export function HeroSection() {
 
             <div className="rounded-sm border border-white/5 bg-surface-container-lowest p-4">
               <div className="mb-4 flex items-center justify-between">
-                <span className="font-mono text-[10px] uppercase tracking-widest text-on-surface-variant">Readiness</span>
+                <span className="meta-label text-on-surface-variant">Readiness</span>
                 <span className="size-1.5 rounded-full bg-primary hero-live-dot" />
               </div>
               <div className="space-y-3">
@@ -102,7 +102,7 @@ export function HeroSection() {
 
           <div className="mt-3 rounded-sm border border-white/5 bg-surface-container-lowest p-3">
             <div className="mb-2 flex items-center justify-between">
-              <span className="font-mono text-[10px] uppercase tracking-widest text-on-surface-variant">Operating Rhythm</span>
+              <span className="meta-label text-on-surface-variant">Operating Rhythm</span>
               <span className="font-mono text-[10px] uppercase text-secondary">Feedback loop active</span>
             </div>
             <div className="grid grid-cols-4 gap-2">
