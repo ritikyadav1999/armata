@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "ARMATA | Startup Operational Support",
+  title: "Armata | Startup Operational Support",
   description:
     "Strategic operating partners deploying validation pipelines, engineering systems, and growth infrastructure for early-stage ventures.",
   icons: {
