@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary-container": "#cfdc00",
+                    "on-background": "#e3e2e3",
+                    "surface-container-highest": "#343536",
+                    "on-secondary": "#342b4f",
+                    "surface-container-high": "#292a2b",
+                    "secondary-fixed": "#e9ddff",
+                    "surface-container-lowest": "#0d0e0f",
+                    "secondary": "#cdc0ed",
+                    "on-primary-fixed-variant": "#25496c",
+                    "inverse-surface": "#e3e2e3",
+                    "on-error": "#690005",
+                    "inverse-on-surface": "#303032",
+                    "surface-container-low": "#1b1c1d",
+                    "secondary-fixed-dim": "#cdc0ed",
+                    "surface": "#121315",
+                    "on-tertiary-fixed-variant": "#454a00",
+                    "primary-fixed-dim": "#a7caf3",
+                    "on-tertiary-container": "#585f00",
+                    "primary": "#e5efff",
+                    "tertiary-fixed": "#dfed1a",
+                    "on-tertiary-fixed": "#1b1d00",
+                    "surface-tint": "#a7caf3",
+                    "primary-fixed": "#d0e4ff",
+                    "on-primary-fixed": "#001d35",
+                    "secondary-container": "#4d4369",
+                    "on-surface-variant": "#c3c7cf",
+                    "on-secondary-fixed": "#1f1538",
+                    "outline-variant": "#42474e",
+                    "on-primary": "#063254",
+                    "error": "#ffb4ab",
+                    "tertiary-fixed-dim": "#c3d000",
+                    "surface-variant": "#343536",
+                    "outline": "#8d9199",
+                    "surface-dim": "#121315",
+                    "on-secondary-fixed-variant": "#4b4166",
+                    "surface-container": "#1f2021",
+                    "background": "#121315",
+                    "on-surface": "#e3e2e3",
+                    "inverse-primary": "#3e6185",
+                    "primary-container": "#b2d5ff",
+                    "on-primary-container": "#395c80"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "margin": "32px",
+                    "xs": "4px",
+                    "xl": "40px",
+                    "unit": "4px",
+                    "md": "16px",
+                    "sm": "8px",
+                    "lg": "24px",
+                    "gutter": "20px"
+            },
+            "fontFamily": {
+                    "h1": ["Inter"],
+                    "label-mono": ["Space Grotesk"],
+                    "caption": ["Inter"],
+                    "display": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "h2": ["Inter"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "h1": ["28px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "label-mono": ["11px", {"lineHeight": "1", "letterSpacing": "0.08em", "fontWeight": "500"}],
+                    "caption": ["11px", {"lineHeight": "1.4", "letterSpacing": "0em", "fontWeight": "500"}],
+                    "display": ["42px", {"lineHeight": "1.05", "letterSpacing": "-0.03em", "fontWeight": "700"}],
+                    "body-sm": ["13px", {"lineHeight": "1.5", "letterSpacing": "0em", "fontWeight": "400"}],
+                    "h2": ["20px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "body-lg": ["15px", {"lineHeight": "1.6", "letterSpacing": "0em", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { background-color: #121315; color: #e3e2e3; -webkit-font-smoothing: antialiased; }
+        .glass-panel {
+            background: rgba(31, 32, 33, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .active-scale:active { transform: scale(0.98); transition: transform 0.1s ease-out; }
+        .workflow-line {
+            background-image: linear-gradient(to bottom, #42474e 50%, transparent 50%);
+            background-size: 1px 8px;
+            background-repeat: repeat-y;
+        }
+        .horizontal-workflow-line {
+            background-image: linear-gradient(to right, #42474e 50%, transparent 50%);
+            background-size: 8px 1px;
+            background-repeat: repeat-x;
+        }
+        
+        /* Custom form styling for operational intake */
+        .op-input {
+            background: rgba(27, 28, 29, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #e3e2e3;
+            border-radius: 0.125rem;
+            padding: 0.75rem 1rem;
+            font-family: 'Space Grotesk', monospace;
+            font-size: 13px;
+            width: 100%;
+            transition: all 0.2s ease;
+        }
+        .op-input:focus {
+            outline: none;
+            border-color: #e5efff;
+            background: rgba(31, 32, 33, 1);
+        }
+        .op-label {
+            display: block;
+            font-family: 'Space Grotesk', monospace;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #8d9199;
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body class="font-body-lg text-body-lg selection:bg-primary/30">
+<!-- Navigation -->
+<nav class="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-sm border-b border-white/5">
+<div class="flex justify-between items-center px-margin py-4 max-w-7xl mx-auto">
+<div class="flex items-center gap-sm">
+<img alt="ARMATA Logo" class="h-6" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAf1DifVXFP5N-ct7TJX22xit3S9yCZfkH70a45vi-4Stqpx1Z2P6WTOmnksc3Ofur5Q34XXCw8DlPU9ChLfQUCMHhoVEPQS2YMuZ13tNP81lgG--DxIcm6jDMbr3rdZP1RNz1PAU2FSg9frKvfaZkksfZPCHBos9R39N_bumfDS2_wD2b233RH_HLfXsIdavh6eulGI7Bp8HJAicGyHVeI7FucgOvH2_t-PJzGNpPsXa_sTeSXz1ZVC8V25q3QaSMs36gVO2qZcoWp"/>
+<span class="font-label-mono text-label-mono font-bold tracking-[0.2em] text-on-surface">ARMATA</span>
+<span class="hidden sm:inline-block px-1.5 py-0.5 border border-white/10 rounded text-[9px] font-label-mono text-on-surface-variant ml-2">SYSTEM v2.4</span>
+</div>
+<div class="hidden md:flex items-center gap-lg">
+<a class="font-label-mono text-[11px] uppercase tracking-wider text-on-surface hover:text-primary transition-colors" href="#why">Why We Exist</a>
+<a class="font-label-mono text-[11px] uppercase tracking-wider text-on-surface-variant hover:text-primary transition-colors" href="#systems">Systems Built</a>
+<a class="font-label-mono text-[11px] uppercase tracking-wider text-on-surface-variant hover:text-primary transition-colors" href="#pipeline">The Pipeline</a>
+</div>
+<a class="bg-on-surface text-surface px-md py-2 rounded-sm font-label-mono text-[11px] font-bold uppercase tracking-wider active-scale" href="#discovery">
+            Partner
+        </a>
+</div>
+</nav>
+<main class="pt-24">
+<!-- Hero Section -->
+<section class="px-margin py-16 max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-16">
+<div class="flex-1 space-y-md">
+<div class="inline-flex items-center gap-2 px-2 py-1 bg-surface-container border border-white/5 rounded-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+<span class="font-label-mono text-[10px] uppercase tracking-widest text-primary">Operational: Partner Intake Open</span>
+</div>
+<h1 class="font-display text-display text-on-surface">
+                The Infrastructure of <br class="hidden md:block text-primary"/> Rapid Execution
+            </h1>
+<p class="text-on-surface-variant max-w-md font-body-sm leading-relaxed">
+                Strategic operating partners for founders. We deploy validation pipelines, engineering systems, and growth infrastructure for early-stage ventures.
+            </p>
+<div class="flex flex-wrap gap-sm pt-4">
+<a class="bg-primary text-on-primary px-lg py-3 rounded-sm font-label-mono text-[12px] font-bold uppercase tracking-wider active-scale inline-block text-center" href="#discovery">
+                    Initialize Discovery
+                </a>
+<a class="border border-white/10 px-lg py-3 rounded-sm font-label-mono text-[12px] font-bold uppercase tracking-wider hover:bg-surface-container-high transition-colors active-scale inline-block text-center" href="#pipeline">
+                    Operating Model
+                </a>
+</div>
+</div>
+<div class="flex-1 w-full max-w-lg">
+<div class="glass-panel rounded-sm p-lg border border-white/10 relative overflow-hidden">
+<div class="absolute top-0 right-0 p-3 opacity-20">
+<span class="font-label-mono text-[9px]">ID: 992-ARC-01</span>
+</div>
+<!-- Validation Pipeline Visual -->
+<div class="space-y-4">
+<div class="flex items-center justify-between">
+<span class="font-label-mono text-[10px] text-on-surface-variant uppercase">Pipeline Stage: Discovery</span>
+<span class="font-label-mono text-[10px] text-primary">STABLE</span>
+</div>
+<div class="grid grid-cols-4 gap-2">
+<div class="h-1.5 bg-primary rounded-full"></div>
+<div class="h-1.5 bg-primary rounded-full"></div>
+<div class="h-1.5 bg-surface-container-highest rounded-full"></div>
+<div class="h-1.5 bg-surface-container-highest rounded-full"></div>
+</div>
+<div class="bg-surface-container-lowest border border-white/5 p-4 rounded-sm space-y-3">
+<div class="flex justify-between items-center text-[11px] border-b border-white/5 pb-2">
+<span class="text-on-surface-variant">Hypothesis Testing</span>
+<span class="font-label-mono text-primary">ACTIVE</span>
+</div>
+<div class="flex justify-between items-center text-[11px] border-b border-white/5 pb-2">
+<span class="text-on-surface-variant">Market Signal</span>
+<span class="font-label-mono">EVALUATING</span>
+</div>
+<div class="flex justify-between items-center text-[11px]">
+<span class="text-on-surface-variant">MVP Architecture</span>
+<span class="font-label-mono opacity-30">PENDING</span>
+</div>
+</div>
+<div class="flex gap-2">
+<div class="flex-1 h-8 bg-surface-container-high border border-white/5 rounded-sm flex items-center justify-center">
+<span class="font-label-mono text-[9px] opacity-40">SYSTEM LOGS</span>
+</div>
+<div class="flex-1 h-8 bg-surface-container-high border border-white/5 rounded-sm flex items-center justify-center">
+<span class="font-label-mono text-[9px] opacity-40">TELEMETRY</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Why ARMATA Exists Section -->
+<section class="py-16 border-y border-white/5 bg-surface-container-low" id="why">
+<div class="max-w-7xl mx-auto px-margin">
+<div class="mb-10 max-w-2xl">
+<span class="font-label-mono text-primary text-[10px] uppercase tracking-[0.2em]">Core Philosophy</span>
+<h2 class="font-h1 text-h1 mt-2">Why ARMATA Exists</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+<div>
+<p class="text-on-surface text-lg leading-relaxed mb-6 font-medium">
+                        Most startups do not fail because of bad ideas. They fail because execution becomes fragmented, validation comes too late, and operational systems are missing early.
+                    </p>
+<p class="text-on-surface-variant text-body-sm leading-relaxed mb-6">
+                        Founders often find themselves building products in a vacuum, relying on intuition rather than rigorous market feedback. The result is wasted capital, burned time, and products that fail to find product-market fit.
+                    </p>
+<p class="text-on-surface-variant text-body-sm leading-relaxed">
+                        ARMATA was built to provide the operational scaffolding that early-stage ventures need. We partner with founders to bring discipline to the chaos of creation.
+                    </p>
+</div>
+<div class="space-y-4">
+<div class="glass-panel p-6 border border-white/5 rounded-sm flex items-start gap-4">
+<div class="w-8 h-8 rounded bg-surface-container flex items-center justify-center shrink-0 border border-white/5">
+<span class="font-label-mono text-primary text-xs font-bold">01</span>
+</div>
+<div>
+<h4 class="font-h2 text-base mb-1">Validate Clearly</h4>
+<p class="text-on-surface-variant text-[13px] leading-snug">Test hypotheses rapidly before committing to heavy engineering builds.</p>
+</div>
+</div>
+<div class="glass-panel p-6 border border-white/5 rounded-sm flex items-start gap-4">
+<div class="w-8 h-8 rounded bg-surface-container flex items-center justify-center shrink-0 border border-white/5">
+<span class="font-label-mono text-primary text-xs font-bold">02</span>
+</div>
+<div>
+<h4 class="font-h2 text-base mb-1">Build Intentionally</h4>
+<p class="text-on-surface-variant text-[13px] leading-snug">Scope and construct MVPs focused strictly on the core value proposition.</p>
+</div>
+</div>
+<div class="glass-panel p-6 border border-white/5 rounded-sm flex items-start gap-4">
+<div class="w-8 h-8 rounded bg-surface-container flex items-center justify-center shrink-0 border border-white/5">
+<span class="font-label-mono text-primary text-xs font-bold">03</span>
+</div>
+<div>
+<h4 class="font-h2 text-base mb-1">Operate Systematically</h4>
+<p class="text-on-surface-variant text-[13px] leading-snug">Deploy analytics, growth loops, and feedback mechanisms from day one.</p>
+</div>
+</div>
+<div class="glass-panel p-6 border border-white/5 rounded-sm flex items-start gap-4">
+<div class="w-8 h-8 rounded bg-surface-container flex items-center justify-center shrink-0 border border-white/5">
+<span class="font-label-mono text-primary text-xs font-bold">04</span>
+</div>
+<div>
+<h4 class="font-h2 text-base mb-1">Scale with Structure</h4>
+<p class="text-on-surface-variant text-[13px] leading-snug">Transition from founder-led chaos to a sustainable operational rhythm.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- The Pipeline / Funnel Section -->
+<section class="py-16" id="pipeline">
+<div class="max-w-7xl mx-auto px-margin">
+<div class="text-center mb-16">
+<span class="font-label-mono text-primary text-[10px] uppercase tracking-[0.2em]">Operational Architecture</span>
+<h2 class="font-h1 text-h1 mt-2">The Pipeline</h2>
+<p class="text-on-surface-variant text-body-sm mt-4 max-w-2xl mx-auto">Our structured transition funnel from raw concept to operational scale.</p>
+</div>
+<div class="flex flex-col md:flex-row gap-4 justify-between relative">
+<!-- Desktop connecting line -->
+<div class="hidden md:block absolute top-1/2 left-0 w-full h-px horizontal-workflow-line -z-10 transform -translate-y-1/2"></div>
+<div class="flex-1 flex flex-col items-center group">
+<div class="w-full bg-surface-container-low border border-white/5 p-4 rounded-sm text-center mb-4 group-hover:border-primary/50 transition-colors relative z-10">
+<span class="font-label-mono text-[10px] text-on-surface-variant block mb-1">STAGE 1</span>
+<h4 class="font-h2 text-sm">Idea Validation</h4>
+</div>
+<div class="h-6 w-px workflow-line md:hidden"></div>
+</div>
+<div class="flex-1 flex flex-col items-center group">
+<div class="w-full bg-surface-container-low border border-white/5 p-4 rounded-sm text-center mb-4 group-hover:border-primary/50 transition-colors relative z-10">
+<span class="font-label-mono text-[10px] text-on-surface-variant block mb-1">STAGE 2</span>
+<h4 class="font-h2 text-sm">User Interviews</h4>
+</div>
+<div class="h-6 w-px workflow-line md:hidden"></div>
+</div>
+<div class="flex-1 flex flex-col items-center group">
+<div class="w-full bg-surface-container-low border border-white/5 p-4 rounded-sm text-center mb-4 group-hover:border-primary/50 transition-colors relative z-10">
+<span class="font-label-mono text-[10px] text-on-surface-variant block mb-1">STAGE 3</span>
+<h4 class="font-h2 text-sm">MVP Scope</h4>
+</div>
+<div class="h-6 w-px workflow-line md:hidden"></div>
+</div>
+<div class="flex-1 flex flex-col items-center group">
+<div class="w-full bg-surface-container-low border border-primary/20 p-4 rounded-sm text-center mb-4 bg-primary/5 relative z-10">
+<span class="font-label-mono text-[10px] text-primary block mb-1">CORE</span>
+<h4 class="font-h2 text-sm text-primary">Rapid Execution</h4>
+</div>
+<div class="h-6 w-px workflow-line md:hidden"></div>
+</div>
+<div class="flex-1 flex flex-col items-center group">
+<div class="w-full bg-surface-container-low border border-white/5 p-4 rounded-sm text-center mb-4 group-hover:border-primary/50 transition-colors relative z-10">
+<span class="font-label-mono text-[10px] text-on-surface-variant block mb-1">STAGE 5</span>
+<h4 class="font-h2 text-sm">Onboarding Intel</h4>
+</div>
+<div class="h-6 w-px workflow-line md:hidden"></div>
+</div>
+<div class="flex-1 flex flex-col items-center group">
+<div class="w-full bg-surface-container-low border border-white/5 p-4 rounded-sm text-center mb-4 group-hover:border-primary/50 transition-colors relative z-10">
+<span class="font-label-mono text-[10px] text-on-surface-variant block mb-1">STAGE 6</span>
+<h4 class="font-h2 text-sm">Analytics Loop</h4>
+</div>
+<div class="h-6 w-px workflow-line md:hidden"></div>
+</div>
+<div class="flex-1 flex flex-col items-center group">
+<div class="w-full bg-surface-container-low border border-white/5 p-4 rounded-sm text-center mb-4 group-hover:border-primary/50 transition-colors relative z-10">
+<span class="font-label-mono text-[10px] text-on-surface-variant block mb-1">STAGE 7</span>
+<h4 class="font-h2 text-sm">Growth Infra</h4>
+</div>
+<div class="h-6 w-px workflow-line md:hidden"></div>
+</div>
+<div class="flex-1 flex flex-col items-center group">
+<div class="w-full bg-surface-container-low border border-white/5 p-4 rounded-sm text-center mb-4 group-hover:border-primary/50 transition-colors relative z-10">
+<span class="font-label-mono text-[10px] text-on-surface-variant block mb-1">FINAL</span>
+<h4 class="font-h2 text-sm">Operational Scale</h4>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- How We Work Section (6-Week Sprint) -->
+<section class="py-16 bg-surface-container-low border-y border-white/5">
+<div class="max-w-7xl mx-auto px-margin">
+<div class="text-center mb-16">
+<span class="font-label-mono text-primary text-[10px] uppercase tracking-[0.2em]">Framework</span>
+<h2 class="font-h1 text-h1 mt-2">How We Work: The 6-Week Sprint</h2>
+<p class="text-on-surface-variant text-body-sm mt-4 max-w-2xl mx-auto">A disciplined timeline for deploying foundational startup infrastructure.</p>
+</div>
+<div class="relative grid grid-cols-1 md:grid-cols-5 gap-0 border border-white/5 divide-y md:divide-y-0 md:divide-x divide-white/5">
+<div class="p-8 space-y-4 hover:bg-surface-container-lowest transition-colors">
+<div class="font-label-mono text-primary text-xs font-bold">WEEK 1</div>
+<h4 class="font-h2 text-base">Discovery &amp; Validation</h4>
+<p class="text-on-surface-variant text-[13px] leading-snug">Deep dive into the core problem, target audience, and initial hypotheses.</p>
+</div>
+<div class="p-8 space-y-4 hover:bg-surface-container-lowest transition-colors">
+<div class="font-label-mono text-primary text-xs font-bold">WEEK 2</div>
+<h4 class="font-h2 text-base">User Research &amp; MVP Scope</h4>
+<p class="text-on-surface-variant text-[13px] leading-snug">Direct user conversations to refine the feature set into a strict, buildable MVP.</p>
+</div>
+<div class="p-8 space-y-4 hover:bg-surface-container-lowest transition-colors bg-surface-container-highest/30">
+<div class="font-label-mono text-primary text-xs font-bold">WEEK 3-4</div>
+<h4 class="font-h2 text-base">Execution Sprint</h4>
+<p class="text-on-surface-variant text-[13px] leading-snug">Focused engineering build of the agreed-upon MVP scope. No distractions.</p>
+</div>
+<div class="p-8 space-y-4 hover:bg-surface-container-lowest transition-colors">
+<div class="font-label-mono text-primary text-xs font-bold">WEEK 5</div>
+<h4 class="font-h2 text-base">Analytics &amp; Ops Systems</h4>
+<p class="text-on-surface-variant text-[13px] leading-snug">Deployment of behavioral tracking, error logging, and operational dashboards.</p>
+</div>
+<div class="p-8 space-y-4 hover:bg-surface-container-lowest transition-colors">
+<div class="font-label-mono text-primary text-xs font-bold">WEEK 6+</div>
+<h4 class="font-h2 text-base">Growth Infrastructure</h4>
+<p class="text-on-surface-variant text-[13px] leading-snug">Establishing acquisition loops, onboarding flows, and continuous iteration cycles.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Product Systems Built (Replaces Case Studies) -->
+<section class="py-16" id="systems">
+<div class="max-w-7xl mx-auto px-margin">
+<div class="mb-12">
+<span class="font-label-mono text-primary text-[10px] uppercase tracking-[0.2em]">Evidence Base</span>
+<h2 class="font-h1 text-h1 mt-2">Product Systems Built</h2>
+<p class="text-on-surface-variant text-body-sm mt-4 max-w-2xl">Examples of operational infrastructure deployed for early-stage partners.</p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+<!-- System 1 -->
+<div class="border border-white/5 rounded-sm overflow-hidden bg-surface-container-lowest">
+<div class="p-6 border-b border-white/5 bg-surface-container-low flex justify-between items-center">
+<div>
+<span class="font-label-mono text-[10px] text-on-surface-variant uppercase tracking-widest block mb-1">Architecture Deployment</span>
+<h3 class="font-h2 text-lg text-primary">AI Finance Workflows</h3>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant opacity-50">account_balance</span>
+</div>
+<div class="p-6 space-y-6">
+<div>
+<h4 class="font-label-mono text-[10px] text-on-surface-variant uppercase tracking-widest mb-2 border-b border-white/5 pb-1">The Problem</h4>
+<p class="text-body-sm text-on-surface leading-relaxed">Manual reconciliation processes were bottlenecking a fintech startup's ability to onboard new enterprise clients.</p>
+</div>
+<div>
+<h4 class="font-label-mono text-[10px] text-on-surface-variant uppercase tracking-widest mb-2 border-b border-white/5 pb-1">Operational Challenge</h4>
+<p class="text-body-sm text-on-surface leading-relaxed">Building an automated system that could handle unstructured financial data with high accuracy while maintaining an audit trail.</p>
+</div>
+<div>
+<h4 class="font-label-mono text-[10px] text-on-surface-variant uppercase tracking-widest mb-2 border-b border-white/5 pb-1">What Was Built</h4>
+<p class="text-body-sm text-on-surface leading-relaxed">An AI-driven data ingestion pipeline connected to a human-in-the-loop dashboard for edge cases, reducing reconciliation time significantly.</p>
+</div>
+<div>
+<h4 class="font-label-mono text-[10px] text-on-surface-variant uppercase tracking-widest mb-2 border-b border-white/5 pb-1">System Thinking</h4>
+<p class="text-body-sm text-on-surface leading-relaxed">Designed for failure: assuming the AI would occasionally miscategorize, the UI prioritized rapid human review rather than aiming for impossible 100% automation.</p>
+</div>
+<div>
+<h4 class="font-label-mono text-[10px] text-primary uppercase tracking-widest mb-2 border-b border-white/5 pb-1">Key Learning</h4>
+<p class="text-body-sm text-primary/90 leading-relaxed">Workflow transparency builds more enterprise trust than black-box automation.</p>
+</div>
+</div>
+</div>
+<!-- System 2 -->
+<div class="border border-white/5 rounded-sm overflow-hidden bg-surface-container-lowest">
+<div class="p-6 border-b border-white/5 bg-surface-container-low flex justify-between items-center">
+<div>
+<span class="font-label-mono text-[10px] text-on-surface-variant uppercase tracking-widest block mb-1">Platform Engineering</span>
+<h3 class="font-h2 text-lg text-primary">Marketplace Architecture</h3>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant opacity-50">storefront</span>
+</div>
+<div class="p-6 space-y-6">
+<div>
+<h4 class="font-label-mono text-[10px] text-on-surface-variant uppercase tracking-widest mb-2 border-b border-white/5 pb-1">The Problem</h4>
+<p class="text-body-sm text-on-surface leading-relaxed">A B2B marketplace struggled to balance supply and demand acquisition, leading to poor liquidity and high churn.</p>
+</div>
+<div>
+<h4 class="font-label-mono text-[10px] text-on-surface-variant uppercase tracking-widest mb-2 border-b border-white/5 pb-1">Operational Challenge</h4>
+<p class="text-body-sm text-on-surface leading-relaxed">Creating a dual-sided onboarding flow that captured necessary verification data without causing massive drop-off rates.</p>
+</div>
+<div>
+<h4 class="font-label-mono text-[10px] text-on-surface-variant uppercase tracking-widest mb-2 border-b border-white/5 pb-1">What Was Built</h4>
+<p class="text-body-sm text-on-surface leading-relaxed">A progressive profiling system integrated with automated background checks, supported by an internal ops dashboard for manual approvals.</p>
+</div>
+<div>
+<h4 class="font-label-mono text-[10px] text-on-surface-variant uppercase tracking-widest mb-2 border-b border-white/5 pb-1">System Thinking</h4>
+<p class="text-body-sm text-on-surface leading-relaxed">Fragmented the onboarding process. Only requested critical data upfront to allow platform exploration, prompting for deeper verification only when a transaction was initiated.</p>
+</div>
+<div>
+<h4 class="font-label-mono text-[10px] text-primary uppercase tracking-widest mb-2 border-b border-white/5 pb-1">Key Learning</h4>
+<p class="text-body-sm text-primary/90 leading-relaxed">Liquidity is driven by reducing time-to-first-value, not comprehensive data collection.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Start Your Discovery Form -->
+<section class="py-24 bg-surface-container-high border-t border-white/5 relative overflow-hidden" id="discovery">
+<div class="absolute inset-0 opacity-[0.02] pointer-events-none">
+<div class="grid grid-cols-12 h-full w-full">
+<div class="border-r border-on-surface h-full"></div>
+<div class="border-r border-on-surface h-full"></div>
+<div class="border-r border-on-surface h-full"></div>
+<div class="border-r border-on-surface h-full"></div>
+<div class="border-r border-on-surface h-full"></div>
+<div class="border-r border-on-surface h-full"></div>
+<div class="border-r border-on-surface h-full"></div>
+<div class="border-r border-on-surface h-full"></div>
+<div class="border-r border-on-surface h-full"></div>
+<div class="border-r border-on-surface h-full"></div>
+<div class="border-r border-on-surface h-full"></div>
+<div class="border-r border-on-surface h-full"></div>
+</div>
+</div>
+<div class="max-w-4xl mx-auto px-margin relative z-10">
+<div class="text-center mb-12">
+<span class="font-label-mono text-primary text-[10px] uppercase tracking-[0.2em] block mb-2">System Intake</span>
+<h2 class="font-display text-3xl leading-tight">Start Your Discovery</h2>
+<p class="text-on-surface-variant mt-4 text-body-sm">
+                Submit your operational parameters. We evaluate partnerships based on founder clarity and execution readiness.
+            </p>
+</div>
+<div class="glass-panel p-8 md:p-12 rounded-sm border border-white/10 shadow-2xl">
+<form class="space-y-6">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div>
+<label class="op-label" for="founder-name">Founder Name</label>
+<input class="op-input" id="founder-name" placeholder="Enter name" type="text"/>
+</div>
+<div>
+<label class="op-label" for="startup-name">Startup Name</label>
+<input class="op-input" id="startup-name" placeholder="Project or Entity name" type="text"/>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div>
+<label class="op-label" for="stage">Current Stage</label>
+<select class="op-input appearance-none bg-surface-container" id="stage">
+<option disabled="" selected="" value="">Select stage</option>
+<option value="idea">Idea / Pre-Product</option>
+<option value="mvp">Building MVP</option>
+<option value="launch">Post-Launch / Early Traction</option>
+<option value="scaling">Scaling Operations</option>
+</select>
+</div>
+<div>
+<label class="op-label" for="team-size">Team Size</label>
+<select class="op-input appearance-none bg-surface-container" id="team-size">
+<option disabled="" selected="" value="">Select size</option>
+<option value="1">Solo Founder</option>
+<option value="2-3">2-3 Members</option>
+<option value="4-10">4-10 Members</option>
+<option value="11+">11+ Members</option>
+</select>
+</div>
+</div>
+<div class="grid grid-cols-1 gap-6">
+<div>
+<label class="op-label" for="building">What are you building?</label>
+<textarea class="op-input min-h-[80px]" id="building" placeholder="Brief description of the product or service"></textarea>
+</div>
+<div>
+<label class="op-label" for="bottleneck">Primary Operational Bottleneck</label>
+<textarea class="op-input min-h-[80px]" id="bottleneck" placeholder="What is slowing down your execution right now?"></textarea>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div>
+<label class="op-label" for="support">Support Needed</label>
+<select class="op-input appearance-none bg-surface-container" id="support">
+<option disabled="" selected="" value="">Select primary need</option>
+<option value="validation">Idea Validation</option>
+<option value="engineering">MVP Engineering</option>
+<option value="ops">Operational Systems</option>
+<option value="growth">Growth Infrastructure</option>
+<option value="full">Full Pipeline Deployment</option>
+</select>
+</div>
+<div>
+<label class="op-label" for="timeline">Expected Timeline</label>
+<select class="op-input appearance-none bg-surface-container" id="timeline">
+<option disabled="" selected="" value="">Select timeline</option>
+<option value="immediate">Immediate (Next 2 Weeks)</option>
+<option value="1month">Within 1 Month</option>
+<option value="q-next">Next Quarter</option>
+</select>
+</div>
+</div>
+<div class="grid grid-cols-1 gap-6">
+<div>
+<label class="op-label" for="website">Website / Artifact Link</label>
+<input class="op-input" id="website" placeholder="https://" type="url"/>
+</div>
+</div>
+<div class="pt-6 border-t border-white/5 flex justify-end">
+<button class="bg-primary text-on-primary px-8 py-3 rounded-sm font-label-mono text-[12px] font-bold uppercase tracking-wider active-scale flex items-center gap-2 transition-colors hover:bg-primary/90" type="button">
+<span class="material-symbols-outlined text-[16px]">send</span>
+                    Transmit Data
+                </button>
+</div>
+</form>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-16 border-t border-white/5 bg-background">
+<div class="flex flex-col md:flex-row justify-between items-start px-margin gap-12 max-w-7xl mx-auto">
+<div class="space-y-4">
+<div class="flex items-center gap-sm">
+<img alt="ARMATA Logo" class="h-5" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAf1DifVXFP5N-ct7TJX22xit3S9yCZfkH70a45vi-4Stqpx1Z2P6WTOmnksc3Ofur5Q34XXCw8DlPU9ChLfQUCMHhoVEPQS2YMuZ13tNP81lgG--DxIcm6jDMbr3rdZP1RNz1PAU2FSg9frKvfaZkksfZPCHBos9R39N_bumfDS2_wD2b233RH_HLfXsIdavh6eulGI7Bp8HJAicGyHVeI7FucgOvH2_t-PJzGNpPsXa_sTeSXz1ZVC8V25q3QaSMs36gVO2qZcoWp"/>
+<span class="font-label-mono text-label-mono font-bold text-on-surface uppercase tracking-widest">ARMATA</span>
+</div>
+<p class="font-body-sm text-[12px] text-on-surface-variant max-w-xs leading-relaxed">Operating Infrastructure for the next generation of founders. Precision in execution.</p>
+<p class="font-label-mono text-[10px] text-on-surface-variant opacity-40 pt-4">© 2024 ARMATA GROUP. SYSTEM STATUS: NOMINAL.</p>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-3 gap-12 w-full md:w-auto">
+<div class="space-y-4">
+<h5 class="font-label-mono text-[10px] text-on-surface uppercase tracking-widest opacity-60">System</h5>
+<div class="flex flex-col gap-2">
+<a class="font-label-mono text-[11px] text-on-surface-variant hover:text-primary transition-colors uppercase" href="#why">Why We Exist</a>
+<a class="font-label-mono text-[11px] text-on-surface-variant hover:text-primary transition-colors uppercase" href="#systems">Systems Built</a>
+</div>
+</div>
+<div class="space-y-4">
+<h5 class="font-label-mono text-[10px] text-on-surface uppercase tracking-widest opacity-60">Registry</h5>
+<div class="flex flex-col gap-2">
+<a class="font-label-mono text-[11px] text-on-surface-variant hover:text-primary transition-colors uppercase" href="#pipeline">The Pipeline</a>
+<a class="font-label-mono text-[11px] text-on-surface-variant hover:text-primary transition-colors uppercase" href="#discovery">Discovery Intake</a>
+</div>
+</div>
+<div class="space-y-4">
+<h5 class="font-label-mono text-[10px] text-on-surface uppercase tracking-widest opacity-60">Nodes</h5>
+<div class="flex flex-col gap-2">
+<a class="font-label-mono text-[11px] text-on-surface-variant hover:text-primary transition-colors uppercase" href="#">Contact</a>
+<a class="font-label-mono text-[11px] text-on-surface-variant hover:text-primary transition-colors uppercase" href="#">Twitter</a>
+</div>
+</div>
+</div>
+</div>
+</footer>
+</body></html>
