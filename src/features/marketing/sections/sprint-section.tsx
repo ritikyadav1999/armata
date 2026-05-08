@@ -3,7 +3,11 @@ import { sprintWeeks } from "@/features/marketing/content";
 
 export function SprintSection() {
   return (
-    <section className="border-y border-white/5 bg-surface-container-low py-12 md:py-14" id="sprint">
+    <section
+      className="border-y border-white/5 bg-surface-container-low py-12 md:py-14"
+      data-analytics-section="how_we_work"
+      id="sprint"
+    >
       <div className="mx-auto max-w-7xl px-5 sm:px-margin">
         <div className="mb-10 md:mb-12">
           <div className="mx-auto max-w-3xl text-center">

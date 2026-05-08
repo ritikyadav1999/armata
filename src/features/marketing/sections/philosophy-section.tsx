@@ -3,7 +3,11 @@ import { principles } from "@/features/marketing/content";
 
 export function PhilosophySection() {
   return (
-    <section className="border-y border-white/5 bg-surface-container-low py-12 md:py-14" id="why">
+    <section
+      className="border-y border-white/5 bg-surface-container-low py-12 md:py-14"
+      data-analytics-section="core_philosophy"
+      id="why"
+    >
       <div className="mx-auto max-w-7xl px-5 sm:px-margin">
         <div className="mb-10 md:mb-12">
           <div className="mx-auto max-w-3xl text-center">

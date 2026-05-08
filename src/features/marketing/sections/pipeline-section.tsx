@@ -42,7 +42,7 @@ export function PipelineSection() {
   }, [activeIndex]);
 
   return (
-    <section className="py-12 md:py-14" id="pipeline">
+    <section className="py-12 md:py-14" data-analytics-section="operating_path" id="pipeline">
       <div className="mx-auto max-w-7xl px-5 sm:px-margin">
         <div className="mb-10 md:mb-12">
           <SectionHeading

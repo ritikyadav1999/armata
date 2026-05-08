@@ -3,7 +3,7 @@ import { ecosystemItems } from "@/features/marketing/content";
 
 export function EcosystemSection() {
   return (
-    <section className="py-12 md:py-14" id="ecosystem">
+    <section className="py-12 md:py-14" data-analytics-section="what_we_provide" id="ecosystem">
       <div className="mx-auto max-w-7xl px-5 sm:px-margin">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-[0.78fr_1.22fr] lg:items-start">
           <SectionHeading

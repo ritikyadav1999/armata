@@ -14,7 +14,10 @@ const readinessItems = [
 
 export function HeroSection() {
   return (
-    <section className="mx-auto flex max-w-7xl flex-col items-center gap-10 px-5 pb-12 pt-8 sm:px-margin md:flex-row md:gap-14 md:pb-14 md:pt-10">
+    <section
+      className="mx-auto flex max-w-7xl flex-col items-center gap-10 px-5 pb-12 pt-8 sm:px-margin md:flex-row md:gap-14 md:pb-14 md:pt-10"
+      data-analytics-section="hero"
+    >
       <div className="flex-1">
         <div className="max-w-xl">
           <h1 className="text-[40px] font-bold leading-[1.06] text-on-surface sm:text-[48px]">
@@ -26,12 +29,18 @@ export function HeroSection() {
           <div className="mt-7 flex flex-wrap gap-sm">
             <a
               className="active-scale inline-block rounded-sm bg-primary px-lg py-3 text-center font-mono text-[12px] font-bold uppercase tracking-wider text-on-primary"
+              data-analytics-cta="true"
+              data-analytics-label="Start Discovery"
+              data-analytics-location="hero"
               href="#discovery"
             >
               Start Discovery
             </a>
             <a
               className="active-scale inline-block rounded-sm border border-white/10 px-lg py-3 text-center font-mono text-[12px] font-bold uppercase tracking-wider transition-colors hover:border-white/25 hover:bg-surface-container-high"
+              data-analytics-cta="true"
+              data-analytics-label="See How We Work"
+              data-analytics-location="hero"
               href="#sprint"
             >
               See How We Work

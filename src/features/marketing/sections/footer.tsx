@@ -45,6 +45,9 @@ export function Footer() {
                 {group.links.map((link) => (
                   <a
                     className="font-mono text-[11px] uppercase text-on-surface-variant transition-colors hover:text-primary"
+                    data-analytics-cta="true"
+                    data-analytics-label={link.label}
+                    data-analytics-location="footer"
                     href={link.href}
                     key={link.label}
                   >

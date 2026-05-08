@@ -16,6 +16,9 @@ export function Navigation() {
                   ? "font-mono text-[11px] uppercase tracking-wider text-on-surface transition-colors hover:text-primary"
                   : "font-mono text-[11px] uppercase tracking-wider text-on-surface-variant transition-colors hover:text-primary"
               }
+              data-analytics-cta="true"
+              data-analytics-label={item.label}
+              data-analytics-location="navbar"
               href={item.href}
               key={item.href}
             >
@@ -25,6 +28,9 @@ export function Navigation() {
         </div>
         <a
           className="active-scale rounded-sm bg-on-surface px-md py-2 text-center font-mono text-[11px] font-bold uppercase tracking-wider text-surface"
+          data-analytics-cta="true"
+          data-analytics-label="Start Discovery"
+          data-analytics-location="navbar"
           href="#discovery"
         >
           Start Discovery
