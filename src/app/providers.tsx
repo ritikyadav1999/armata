@@ -58,7 +58,8 @@ function PostHogBehaviorTracking() {
 
           viewedSections.add(section);
           capturePostHogEvent("section_viewed", {
-            section
+            section,
+            section_name: section
           });
         });
       },

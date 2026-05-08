@@ -38,11 +38,11 @@ const timelines = [
 ];
 
 const countryCodes = [
-  ["+91", "🇮🇳 +91"],
-  ["+1", "🇺🇸 +1"],
-  ["+44", "🇬🇧 +44"],
-  ["+971", "🇦🇪 +971"],
-  ["+65", "🇸🇬 +65"]
+  ["+91", "India +91"],
+  ["+1", "United States +1"],
+  ["+44", "United Kingdom +44"],
+  ["+971", "United Arab Emirates +971"],
+  ["+65", "Singapore +65"]
 ];
 
 const preferredCommunication = [
@@ -52,6 +52,10 @@ const preferredCommunication = [
   ["telegram", "Telegram"],
   ["google-meet", "Google Meet"]
 ];
+
+function selectedLabel(options: string[][], selectedValue: string) {
+  return options.find(([value]) => value === selectedValue)?.[1] || null;
+}
 
 export function DiscoverySection() {
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
@@ -90,6 +94,8 @@ export function DiscoverySection() {
     const optionalValue = (key: string) => value(key) || null;
     const countryCode = value("country-code");
     const phoneNumber = value("phone-number");
+    const support = value("support");
+    const timeline = value("timeline");
 
     const payload = {
       founder_name: optionalValue("founder-name"),
@@ -99,6 +105,8 @@ export function DiscoverySection() {
       communication_preference: optionalValue("preferred-communication"),
       stage: optionalValue("stage"),
       team_size: optionalValue("team-size"),
+      support_needed: selectedLabel(supportNeeds, support),
+      expected_timeline: selectedLabel(timelines, timeline),
       startup_description: optionalValue("building"),
       bottleneck: optionalValue("bottleneck"),
       website: optionalValue("website")
@@ -108,6 +116,8 @@ export function DiscoverySection() {
       communication_preference: payload.communication_preference,
       stage: payload.stage,
       team_size: payload.team_size,
+      support_needed: payload.support_needed,
+      expected_timeline: payload.expected_timeline,
       has_phone: Boolean(payload.phone),
       has_website: Boolean(payload.website)
     });
@@ -118,7 +128,9 @@ export function DiscoverySection() {
     if (error) {
       capturePostHogEvent("discovery_form_failed", {
         stage: payload.stage,
-        team_size: payload.team_size
+        team_size: payload.team_size,
+        support_needed: payload.support_needed,
+        expected_timeline: payload.expected_timeline
       });
       const errorMessage = "We could not submit your discovery request. Please try again.";
       setStatus("error");
@@ -130,6 +142,8 @@ export function DiscoverySection() {
       communication_preference: payload.communication_preference,
       stage: payload.stage,
       team_size: payload.team_size,
+      support_needed: payload.support_needed,
+      expected_timeline: payload.expected_timeline,
       has_phone: Boolean(payload.phone),
       has_website: Boolean(payload.website)
     });
